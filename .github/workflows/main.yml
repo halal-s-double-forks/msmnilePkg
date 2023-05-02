@@ -18,13 +18,54 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    strategy:
+      max-parallel: 31
+      matrix:
+        device:
+          - asus-I001DC
+          - blackshark-darklighter
+          - blackshark-skywalker
+          - htc-rtx
+          - kakao-pine
+          - lg-alphaplus
+          - lg-betalm
+          - lg-flashlmdd
+          - lg-mh2lm
+          - lg-mh2lm5g
+          - meizu-m928q
+          - meizu-m971q
+          - nubia-tp1803
+          - oneplus-guacamole
+          - oneplus-guacamoleb
+          - oneplus-hotdog
+          - oneplus-hotdogg
+          - oppo-op46c3
+          - oppo-pclm10
+          - qcom-msmnile
+          - realme-rmx2086
+          - samsung-beyond1qlte
+          - smartisan-aries
+          - xiaomi-andromeda
+          - xiaomi-avenger
+          - xiaomi-cepheus
+          - xiaomi-crux
+          - xiaomi-hercules
+          - xiaomi-nabu
+          - xiaomi-raphael
+          - xiaomi-vayu
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - name: docker build
-        run: docker-compose up
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
+      - name: Setup Environment
+        run: ./setup_env.sh && pip3 install -r pip-requirements.txt 
+        
+      - name: Build
+        run: python3 -m venv SurfaceDuo && source SurfaceDuo/bin/activate && ./setup_uefi.sh && python3 ./Platforms/SurfaceDuo1Pkg/StampBuild.py && ./build_uefi.sh -d ${{ matrix.device }}
+        
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
