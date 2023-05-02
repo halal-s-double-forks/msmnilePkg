@@ -22,36 +22,6 @@ jobs:
       max-parallel: 31
       matrix:
         device:
-          - asus-I001DC
-          - blackshark-darklighter
-          - blackshark-skywalker
-          - htc-rtx
-          - kakao-pine
-          - lg-alphaplus
-          - lg-betalm
-          - lg-flashlmdd
-          - lg-mh2lm
-          - lg-mh2lm5g
-          - meizu-m928q
-          - meizu-m971q
-          - nubia-tp1803
-          - oneplus-guacamole
-          - oneplus-guacamoleb
-          - oneplus-hotdog
-          - oneplus-hotdogg
-          - oppo-op46c3
-          - oppo-pclm10
-          - qcom-msmnile
-          - realme-rmx2086
-          - samsung-beyond1qlte
-          - smartisan-aries
-          - xiaomi-andromeda
-          - xiaomi-avenger
-          - xiaomi-cepheus
-          - xiaomi-crux
-          - xiaomi-hercules
-          - xiaomi-nabu
-          - xiaomi-raphael
           - xiaomi-vayu
 
     # Steps represent a sequence of tasks that will be executed as part of the job
